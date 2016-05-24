@@ -29,6 +29,7 @@ window.addEventListener('load', function() {
     fireBuring.set(newContact, function() {
       console.log('Contact has been submitted');
     });
+    alert(newContact.name + 'has been added to the Contact Book');
   });
 
   var pull = new Firebase('https://tiycontactapp.firebaseio.com/contacts/');
@@ -63,8 +64,9 @@ window.addEventListener('load', function() {
   var emailSearchBox = document.getElementById('email');
     emailSearchBox.addEventListener('keyup', function(){
       var searchEmail = emailSearchBox.value;
-      var re = '^([0-9a-zA-Z]([\-\_\.]*[0-9a-zA-Z]+)*)@([0-9a-zA-Z]([\-\_\.]*[A-Za-z0-9]+)*)\.([a-zA-Z]{2,9})$';
-      if (re.test(searchEmail)){
+      var emailCheck = new RegExp('^([0-9a-zA-Z]([\-\_\.]*[0-9a-zA-Z]+)*)@([0-9a-zA-Z]([\-\_\.]*[A-Za-z0-9]+)*)\.([a-zA-Z]{2,9})$');
+      if (emailCheck.test(searchEmail)){
+        console.log(searchEmail.test(searchEmail.value));
         return true;
       }else{
         return false;
